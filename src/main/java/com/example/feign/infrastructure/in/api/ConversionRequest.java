@@ -1,10 +1,9 @@
-package com.example.feign.models.internal;
+package com.example.feign.infrastructure.in.api;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
-import java.util.Map;
 
 /**
  * @author Y510p

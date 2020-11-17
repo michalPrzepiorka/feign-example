@@ -1,4 +1,4 @@
-package com.example.feign.config;
+package com.example.feign.infrastructure.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,5 @@
-package com.example.feign.clients;
+package com.example.feign.infrastructure.out.exchangeapi;
 
-import com.example.feign.models.external.CurrencyResponse;
 import feign.Param;
 import feign.RequestLine;
 
