@@ -20,9 +20,9 @@ public class ExchangeRates {
     }
 
     public Rate rateTo(Currency targetCurrency) {
-        return new Rate(
-                Optional.ofNullable(rates.get(targetCurrency.getCurrencyCode())).orElseThrow(() -> new RuntimeException(String.format("Currency code %s not available", targetCurrency.getCurrencyCode()))),
-                targetCurrency
-        );
+        return Optional.of(targetCurrency.getCurrencyCode())
+                .map(rates::get)
+                .map(rate -> new Rate(rate, targetCurrency))
+                .orElseThrow(() -> new RuntimeException(String.format("Currency code %s not available", targetCurrency.getCurrencyCode())));
     }
 }
