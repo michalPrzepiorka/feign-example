@@ -1,9 +1,6 @@
-package com.example.feign.models.internal;
+package com.example.feign.infrastructure.in.api;
 
-import lombok.Data;
 import lombok.Value;
-
-import java.math.BigDecimal;
 
 /**
  * @author Y510p
