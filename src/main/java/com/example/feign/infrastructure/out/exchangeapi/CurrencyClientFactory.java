@@ -17,19 +17,22 @@ import java.net.URI;
 
 @Component
 public class CurrencyClientFactory {
-    private final URI uri;
+    private URI uri;
 
     public CurrencyClientFactory() {
-        uri = URI.create("https://api.exchangeratesapi.io");
+        this.uri = URI.create("https://api.exchangeratesapi.io");
     }
 
-    public CurrencyClient createClient() {
+    public CurrencyClient createClient(URI uri) {
+        if (uri != null) {
+            this.uri = uri;
+        }
         return Feign.builder()
                 .client(new OkHttpClient())
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
                 .logger(new Slf4jLogger())
                 .logLevel(Logger.Level.FULL)
-                .target(CurrencyClient.class, uri.toString());
+                .target(CurrencyClient.class, this.uri.toString());
     }
 }

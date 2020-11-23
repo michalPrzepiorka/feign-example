@@ -12,6 +12,6 @@ import org.springframework.context.annotation.Configuration;
 public class CurrencyClientConfiguration {
     @Bean
     public CurrencyClient currencyClient(CurrencyClientFactory clientFactory) {
-        return clientFactory.createClient();
+        return clientFactory.createClient(null);
     }
 }
