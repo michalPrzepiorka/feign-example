@@ -8,8 +8,6 @@ import feign.okhttp.OkHttpClient;
 import feign.slf4j.Slf4jLogger;
 import org.springframework.stereotype.Component;
 
-import java.net.URI;
-
 /**
  * @author Y510p
  * @project feign
@@ -17,22 +15,19 @@ import java.net.URI;
 
 @Component
 public class CurrencyClientFactory {
-    private URI uri;
+    private final CurrencyClientConfiguration currencyClientConfiguration;
 
-    public CurrencyClientFactory() {
-        this.uri = URI.create("https://api.exchangeratesapi.io");
+    public CurrencyClientFactory(CurrencyClientConfiguration currencyClientConfiguration) {
+        this.currencyClientConfiguration = currencyClientConfiguration;
     }
 
-    public CurrencyClient createClient(URI uri) {
-        if (uri != null) {
-            this.uri = uri;
-        }
+    public CurrencyClient createClient() {
         return Feign.builder()
                 .client(new OkHttpClient())
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
                 .logger(new Slf4jLogger())
                 .logLevel(Logger.Level.FULL)
-                .target(CurrencyClient.class, this.uri.toString());
+                .target(CurrencyClient.class, currencyClientConfiguration.getHost().toString());
     }
 }

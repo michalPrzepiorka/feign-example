@@ -1,17 +1,16 @@
 package com.example.feign.infrastructure.out.exchangeapi;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConstructorBinding;
 
-/**
- * @author Y510p
- * @project feign
- **/
+import java.net.URI;
 
-@Configuration
+@ConstructorBinding
+@ConfigurationProperties(prefix = "external-services.exchange-rates-api")
+@AllArgsConstructor
+@Getter
 public class CurrencyClientConfiguration {
-    @Bean
-    public CurrencyClient currencyClient(CurrencyClientFactory clientFactory) {
-        return clientFactory.createClient(null);
-    }
+    private final URI host;
 }

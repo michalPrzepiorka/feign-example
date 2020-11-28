@@ -1,0 +1,6 @@
+fake-external-service:
+  port: 8080
+
+external-services:
+  exchange-rates-api:
+    host: http://localhost:${fake-external-service.port}

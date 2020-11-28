@@ -1,0 +1,8 @@
+external-services:
+  exchange-rates-api:
+    host: https://api.exchangeratesapi.io
+
+
+logging:
+  level:
+    feign.Logger: debug
